@@ -1,4 +1,8 @@
-# Byte-compiled / optimized / DLL files
+# Project directories
+letsencrypt/
+mongo-data/
+#
+# # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
