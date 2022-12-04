@@ -3,6 +3,7 @@ version: '3'
 services:
   mongo:
     image: mongo:4.4
+    restart: always
     volumes:
       - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
 
@@ -44,7 +45,7 @@ services:
       ### Features
       # ENABLE - Used to enable optional features, expects a space delimited list, such as: careportal rawbg iob
       # See https://github.com/nightscout/cgm-remote-monitor#plugins for details
-      ENABLE: careportal rawbg iob bridge 
+      ENABLE: "careportal rawbg iob bridge cage sage" 
       BRIDGE_USER_NAME: ${BRIDGE_USER_NAME}
       BRIDGE_PASSWORD: ${BRIDGE_PASSWORD} 
       BRIDGE_SERVER: ${BRIDGE_SERVER} 
@@ -56,9 +57,17 @@ services:
 
       # For all other settings, please refer to the Environment section of the README
       # https://github.com/nightscout/cgm-remote-monitor#environment
+      #
+      CAGE_DISPLAY: "hours"
+      CAGE_INFO: 56
+      CAGE_WARN: 72
+      CAGE_URGENT: 96        
+      DISPLAY_UNITS: "mmol"
+      NIGHT_MODE: "off"
 
   traefik:
     image: traefik:latest
+    restart: always      
     container_name: 'traefik'
     command:
       - "--log.level=DEBUG"
