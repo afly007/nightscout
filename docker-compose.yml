@@ -45,7 +45,7 @@ services:
       ### Features
       # ENABLE - Used to enable optional features, expects a space delimited list, such as: careportal rawbg iob
       # See https://github.com/nightscout/cgm-remote-monitor#plugins for details
-      ENABLE: "careportal rawbg iob bridge cage sage" 
+      ENABLE: "careportal rawbg iob bridge cage sage cors" 
       BRIDGE_USER_NAME: ${BRIDGE_USER_NAME}
       BRIDGE_PASSWORD: ${BRIDGE_PASSWORD} 
       BRIDGE_SERVER: ${BRIDGE_SERVER} 
