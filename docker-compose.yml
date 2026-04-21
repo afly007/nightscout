@@ -45,10 +45,15 @@ services:
       ### Features
       # ENABLE - Used to enable optional features, expects a space delimited list, such as: careportal rawbg iob
       # See https://github.com/nightscout/cgm-remote-monitor#plugins for details
-      ENABLE: "careportal rawbg iob bridge cage sage cors" 
+      ENABLE: "careportal rawbg iob cob bridge cage sage cors connect pump" 
       BRIDGE_USER_NAME: ${BRIDGE_USER_NAME}
       BRIDGE_PASSWORD: ${BRIDGE_PASSWORD} 
       BRIDGE_SERVER: ${BRIDGE_SERVER} 
+
+      CONNECT_SOURCE: "glooko" 
+      CONNECT_GLOOKO_EMAIL: ${CONNECT_GLOOKO_EMAIL}
+      CONNECT_GLOOKO_PASSWORD: ${CONNECT_GLOOKO_PASSWORD}
+      CONNECT_GLOOKO_SERVER: "ca.api.glooko.com" 
 
       # AUTH_DEFAULT_ROLES (readable) - possible values readable, denied, or any valid role name.
       # When readable, anyone can view Nightscout without a token. Setting it to denied will require
@@ -65,6 +70,8 @@ services:
       DISPLAY_UNITS: "mmol"
       NIGHT_MODE: "off"
       THEME: "colors"
+      DEVICESTATUS_ADVANCED: "true"
+      PUMP_FIELDS: "reservoir battery clock"  
 
   traefik:
     image: traefik:latest
